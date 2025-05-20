@@ -1,0 +1,112 @@
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background-color: #000; /* black background */
+  color: #f0f0f0;
+}
+
+.container {
+  display: flex;
+  max-width: 1100px;
+  margin: 40px auto;
+  box-shadow: 0 0 15px rgba(255, 165, 0, 0.4);
+  background-color: #111; /* dark container background */
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.sidebar {
+  width: 35%;
+  background-color: #1a1a1a;
+  padding: 30px;
+  box-sizing: border-box;
+  border-right: 3px solid orange;
+}
+
+.sidebar h1 {
+  font-size: 24px;
+  color: orange;
+  line-height: 1.4;
+  margin-bottom: 5px;
+}
+
+.sidebar .last-name {
+  font-size: 32px;
+  font-weight: bold;
+  color: white;
+  display: block;
+}
+
+.sidebar .subtitle {
+  text-transform: uppercase;
+  font-size: 14px;
+  color: #ccc;
+  margin-bottom: 30px;
+}
+
+.section {
+  margin-bottom: 30px;
+}
+
+.section h2 {
+  font-size: 16px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid orange;
+  padding-bottom: 5px;
+  text-transform: uppercase;
+  color: orange;
+}
+
+.section ul {
+  list-style-type: circle;
+  padding-left: 20px;
+  color: #ddd;
+}
+
+.content {
+  width: 65%;
+  padding: 40px;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.profile-pic {
+  position: absolute;
+  top: 15px;
+  right: 40px;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid orange;
+  box-shadow: 0 0 10px orange;
+}
+
+.profile-pic img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.content section {
+  margin-bottom: 30px;
+}
+
+.content h2 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid orange;
+  padding-bottom: 5px;
+  text-transform: uppercase;
+  color: orange;
+}
+
+.job {
+  margin-bottom: 20px;
+}
+
+.job ul {
+  list-style-type: disc;
+  padding-left: 20px;
+  color: #ccc;
+}
