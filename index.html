@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Pranjal Rai - Portfolio</title>
+  <meta name="description" content="Portfolio of Pranjal Rai, a BCA student from KIIT seeking a tech internship.">
   <link rel="stylesheet" href="style.css" />
   <style>
     body {
@@ -22,6 +23,12 @@
       background-color: #111;
       border-radius: 10px;
       overflow: hidden;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     .sidebar {
@@ -36,27 +43,6 @@
       display: flex;
       align-items: center;
       gap: 15px;
-    }
-
-    .content h1 {
-      font-size: 24px;
-      color: orange;
-      line-height: 1.4;
-      margin: 0;
-    }
-
-    .content .last-name {
-      font-size: 32px;
-      font-weight: bold;
-      color: white;
-      display: block;
-    }
-
-    .content .subtitle {
-      text-transform: uppercase;
-      font-size: 14px;
-      color: #ccc;
-      margin: 10px 0 30px 0;
     }
 
     .profile-pic {
@@ -94,11 +80,37 @@
       color: #ddd;
     }
 
+    .section ul li:hover {
+      color: orange;
+      cursor: default;
+    }
+
     .content {
       width: 65%;
       padding: 40px;
       box-sizing: border-box;
       position: relative;
+    }
+
+    .content h1 {
+      font-size: 24px;
+      color: orange;
+      line-height: 1.4;
+      margin: 0;
+    }
+
+    .content .last-name {
+      font-size: 32px;
+      font-weight: bold;
+      color: white;
+      display: block;
+    }
+
+    .content .subtitle {
+      text-transform: uppercase;
+      font-size: 14px;
+      color: #ccc;
+      margin: 10px 0 30px 0;
     }
 
     .content section {
@@ -120,7 +132,22 @@
       color: #ccc;
     }
 
-    /* Responsive Design */
+    .download-btn {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 10px 20px;
+      background-color: orange;
+      color: black;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+    }
+
+    .download-btn:hover {
+      background-color: darkorange;
+    }
+
     @media (max-width: 768px) {
       .container {
         flex-direction: column;
@@ -148,8 +175,9 @@
       <div class="section">
         <h2>Contact</h2>
         <ul>
-          <li>📍 KOLKATA</li>
-          <li>📧 official.pranjalr13@gmail.com</li>
+          <li>📍 Kolkata</li>
+          <li>📧 <a href="mailto:official.pranjalr13@gmail.com" style="color: #ddd;">official.pranjalr13@gmail.com</a></li>
+          <li>🔗 <a href="https://www.linkedin.com/in/pranjal-rai-0426a9299" target="_blank" style="color: #ddd;">LinkedIn</a></li>
         </ul>
       </div>
 
@@ -179,7 +207,7 @@
           <h1>Pranjal<br><span class="last-name">Rai</span></h1>
         </div>
         <div class="profile-pic">
-          <img src="a0c89dbb-7f61-4f61-b6b6-1adec281ff76.png" alt="Profile Picture">
+          <img src="pic1.png" alt="Photo of Pranjal Rai">
         </div>
       </div>
       <p class="subtitle">Student at KIIT</p>
@@ -201,10 +229,11 @@
       <section>
         <h2>Skills</h2>
         <ul>
-          <li>MS-OFFICE (MS-WORD, MS-EXCEL, MS-POWER POINT etc.)</li>
+          <li>MS Office (Word, Excel, PowerPoint)</li>
           <li>HTML</li>
           <li>CSS</li>
         </ul>
+        <a href="Pranjal_Rai_Resume.pdf" download class="download-btn">Download Resume</a>
       </section>
     </main>
   </div>
