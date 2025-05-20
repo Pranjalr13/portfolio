@@ -4,238 +4,321 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Pranjal Rai - Portfolio</title>
-  <meta name="description" content="Portfolio of Pranjal Rai, a BCA student from KIIT seeking a tech internship.">
-  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
   <style>
-    body {
+    :root {
+      --primary: #007BFF;
+      --light-blue: #e0f2ff;
+      --white: #ffffff;
+      --dark-blue: #003366;
+      --gray: #334155;
+      --bg-color: var(--light-blue);
+      --text-color: var(--gray);
+    }
+
+    [data-theme="dark"] {
+      --bg-color: #0f172a;
+      --text-color: #f1f5f9;
+      --primary: #38bdf8;
+      --light-blue: #1e293b;
+      --white: #0f172a;
+      --dark-blue: #f8fafc;
+    }
+
+    * {
       margin: 0;
-      font-family: 'Arial', sans-serif;
-      background-color: #000;
-      color: #f0f0f0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      transition: background-color 0.3s, color 0.3s;
     }
 
     .container {
-      display: flex;
-      flex-direction: row;
       max-width: 1100px;
-      margin: 40px auto;
-      box-shadow: 0 0 15px rgba(255, 165, 0, 0.4);
-      background-color: #111;
-      border-radius: 10px;
-      overflow: hidden;
-      animation: fadeIn 1s ease-in-out;
+      margin: 0 auto;
+      padding: 20px;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+    .theme-toggle {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      padding: 10px 20px;
+      background-color: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
     }
 
-    .sidebar {
-      width: 35%;
-      background-color: #1a1a1a;
-      padding: 30px;
-      box-sizing: border-box;
-      border-right: 3px solid orange;
+    .hero {
+      text-align: center;
+      padding: 60px 20px;
+      animation: fadeIn 1s ease-in;
     }
 
-    .header-with-pic {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-    }
-
-    .profile-pic {
-      width: 60px;
-      height: 60px;
+    .profile-photo {
+      width: 150px;
+      height: 150px;
       border-radius: 50%;
       overflow: hidden;
-      border: 2px solid orange;
-      box-shadow: 0 0 8px orange;
-      flex-shrink: 0;
+      margin: 0 auto 20px;
+      border: 5px solid var(--primary);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      animation: scaleIn 0.8s ease;
     }
 
-    .profile-pic img {
+    .profile-photo img {
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
 
-    .section {
-      margin-bottom: 30px;
+    h1 {
+      font-size: 36px;
+      color: var(--dark-blue);
     }
 
-    .section h2 {
-      font-size: 16px;
-      margin-bottom: 10px;
-      border-bottom: 1px solid orange;
-      padding-bottom: 5px;
-      text-transform: uppercase;
-      color: orange;
+    h2 {
+      font-size: 28px;
+      margin-bottom: 15px;
+      color: var(--primary);
+      animation: fadeInUp 0.8s ease-in-out;
     }
 
-    .section ul {
-      list-style-type: circle;
-      padding-left: 20px;
-      color: #ddd;
+    .buttons {
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
     }
 
-    .section ul li:hover {
-      color: orange;
-      cursor: default;
-    }
-
-    .content {
-      width: 65%;
-      padding: 40px;
-      box-sizing: border-box;
-      position: relative;
-    }
-
-    .content h1 {
-      font-size: 24px;
-      color: orange;
-      line-height: 1.4;
-      margin: 0;
-    }
-
-    .content .last-name {
-      font-size: 32px;
-      font-weight: bold;
+    .button {
+      background-color: var(--primary);
       color: white;
-      display: block;
-    }
-
-    .content .subtitle {
-      text-transform: uppercase;
-      font-size: 14px;
-      color: #ccc;
-      margin: 10px 0 30px 0;
-    }
-
-    .content section {
-      margin-bottom: 30px;
-    }
-
-    .content h2 {
-      font-size: 18px;
-      margin-bottom: 10px;
-      border-bottom: 1px solid orange;
-      padding-bottom: 5px;
-      text-transform: uppercase;
-      color: orange;
-    }
-
-    .job ul {
-      list-style-type: disc;
-      padding-left: 20px;
-      color: #ccc;
-    }
-
-    .download-btn {
-      display: inline-block;
-      margin-top: 10px;
-      padding: 10px 20px;
-      background-color: orange;
-      color: black;
-      border-radius: 5px;
+      padding: 12px 24px;
+      border-radius: 8px;
       text-decoration: none;
       font-weight: bold;
-      transition: background-color 0.3s ease;
+      transition: background-color 0.3s;
     }
 
-    .download-btn:hover {
-      background-color: darkorange;
+    .button:hover {
+      background-color: #005bb5;
+    }
+
+    section {
+      padding: 50px 20px;
+      text-align: center;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    p, li {
+      font-size: 16px;
+      max-width: 800px;
+      margin: 0 auto 10px;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .skills li {
+      display: inline-block;
+      background-color: var(--white);
+      margin: 10px;
+      padding: 10px 16px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+
+    .timeline {
+      position: relative;
+      padding: 40px 0;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 0;
+      width: 4px;
+      height: 100%;
+      background: var(--primary);
+      transform: translateX(-50%);
+    }
+
+    .timeline-item {
+      position: relative;
+      width: 50%;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    .timeline-item:nth-child(odd) {
+      left: 0;
+    }
+
+    .timeline-item:nth-child(even) {
+      left: 50%;
+    }
+
+    .timeline-item::after {
+      content: '';
+      position: absolute;
+      top: 30px;
+      right: -6px;
+      width: 12px;
+      height: 12px;
+      background-color: var(--primary);
+      border-radius: 50%;
+    }
+
+    .timeline-item:nth-child(even)::after {
+      left: -6px;
+    }
+
+    .timeline-content {
+      background-color: var(--white);
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin-top: 20px;
+      flex-wrap: wrap;
+    }
+
+    .contact-links a {
+      color: var(--primary);
+      font-weight: bold;
+      text-decoration: none;
+      font-size: 18px;
+    }
+
+    .contact-links a:hover {
+      text-decoration: underline;
     }
 
     @media (max-width: 768px) {
-      .container {
-        flex-direction: column;
-      }
-
-      .sidebar, .content {
+      h1 { font-size: 28px; }
+      h2 { font-size: 22px; }
+      .profile-photo { width: 120px; height: 120px; }
+      .timeline::before { left: 20px; }
+      .timeline-item {
         width: 100%;
-        padding: 20px;
+        padding-left: 40px;
+        margin-bottom: 30px;
       }
+      .timeline-item:nth-child(even),
+      .timeline-item:nth-child(odd) {
+        left: 0;
+      }
+      .timeline-item::after {
+        left: 8px;
+      }
+    }
 
-      .header-with-pic {
-        flex-direction: column;
-        align-items: flex-start;
-      }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
 
-      .profile-pic {
-        margin-top: 10px;
-      }
+    @keyframes fadeInUp {
+      from { transform: translateY(20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    @keyframes scaleIn {
+      from { transform: scale(0.8); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <aside class="sidebar">
-      <div class="section">
-        <h2>Contact</h2>
-        <ul>
-          <li>📍 Kolkata</li>
-          <li>📧 <a href="mailto:official.pranjalr13@gmail.com" style="color: #ddd;">official.pranjalr13@gmail.com</a></li>
-          <li>🔗 <a href="https://www.linkedin.com/in/pranjal-rai-0426a9299" target="_blank" style="color: #ddd;">LinkedIn</a></li>
-        </ul>
-      </div>
 
-      <div class="section">
-        <h2>Languages Known</h2>
-        <ul>
-          <li>English (Limited working proficiency)</li>
-          <li>Hindi (Native proficiency)</li>
-          <li>Bengali (Limited working proficiency)</li>
-        </ul>
-      </div>
+  <button class="theme-toggle" onclick="toggleTheme()">Theme</button>
 
-      <div class="section">
-        <h2>Co-Curricular Activities</h2>
-        <ul>
-          <li>Leadership</li>
-          <li>Volunteer work</li>
-          <li>Swimming</li>
-          <li>Badminton</li>
-        </ul>
-      </div>
-    </aside>
-
-    <main class="content">
-      <div class="header-with-pic">
-        <div>
-          <h1>Pranjal<br><span class="last-name">Rai</span></h1>
-        </div>
-        <div class="profile-pic">
-          <img src="pic1.png" alt="Photo of Pranjal Rai">
-        </div>
-      </div>
-      <p class="subtitle">Student at KIIT</p>
-
-      <section>
-        <h2>Profile</h2>
-        <p>Strategic BCA student at Kalinga Institute of Industrial Technology, seeking a tech-based internship to learn and gain experience in my field.</p>
-      </section>
-
-      <section>
-        <h2>Education</h2>
-        <div class="job">
-          <strong>Bachelor of Computer Application</strong><br>
-          Kalinga Institute of Industrial Technology<br>
-          Expected Graduation: May 2027
-        </div>
-      </section>
-
-      <section>
-        <h2>Skills</h2>
-        <ul>
-          <li>MS Office (Word, Excel, PowerPoint)</li>
-          <li>HTML</li>
-          <li>CSS</li>
-        </ul>
-        <a href="Pranjal_Rai_Resume.pdf" download class="download-btn">Download Resume</a>
-      </section>
-    </main>
+  <div class="hero">
+    <div class="profile-photo">
+      <img src="your-photo.jpg" alt="Pranjal's Photo">
+    </div>
+    <h1>Hi, I'm Pranjal Rai</h1>
+    <p>Student at KIIT | Aspiring Tech Enthusiast</p>
+    <div class="buttons">
+      <a href="#about" class="button">Learn More</a>
+      <a href="Pranjal_Rai_Resume.pdf" class="button" download>Download Resume</a>
+    </div>
   </div>
+
+  <div class="container">
+    <section id="about">
+      <h2>About Me</h2>
+      <p>I am a BCA student at Kalinga Institute of Industrial Technology (KIIT) with a passion for technology and growth. I strive to develop practical skills and contribute to real-world tech solutions.</p>
+    </section>
+
+    <section class="skills">
+      <h2>Skills</h2>
+      <ul>
+        <li>HTML</li>
+        <li>CSS</li>
+        <li>MS Office (Word, Excel, PowerPoint)</li>
+        <li>Communication</li>
+        <li>Teamwork</li>
+      </ul>
+    </section>
+
+    <section class="education">
+      <h2>Education Timeline</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-content">
+            <h3>2024–2028</h3>
+            <p><strong>KIIT University</strong><br>Bachelor of Computer Application<br>First Year Completed</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-content">
+            <h3>2024</h3>
+            <p><strong>Apeejay School (Higher Secondary)</strong><br>CBSE – 79.4%</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-content">
+            <h3>2022</h3>
+            <p><strong>Apeejay School (Secondary)</strong><br>CBSE – 75.4%</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact">
+      <h2>Contact Me</h2>
+      <div class="contact-links">
+        <a href="mailto:official.pranjalr13@gmail.com">📧 Gmail</a>
+        <a href="https://www.linkedin.com/in/pranjalrai" target="_blank">🔗 LinkedIn</a>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    function toggleTheme() {
+      const currentTheme = document.documentElement.getAttribute("data-theme");
+      document.documentElement.setAttribute("data-theme", currentTheme === "dark" ? "light" : "dark");
+    }
+  </script>
 </body>
 </html>
