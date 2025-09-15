@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -8,22 +8,6 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
     :root {
-      /* Dark Theme Professional */
-      --primary: #4a90e2; /* Muted Professional Blue */
-      --secondary: #6cb6ff; /* Lighter Blue for highlights */
-      --text-color: #e0e6ed; /* Light Gray for readability */
-      --heading-color: #ffffff; /* Pure White for headings */
-      --bg-color: #1a202c; /* Deep Charcoal Blue */
-      --card-bg: #2d3748; /* Slightly lighter card background */
-      --border-color: rgba(74, 144, 226, 0.3); /* Transparent blue border */
-      --shadow-color: rgba(0, 0, 0, 0.2); /* Subtle dark shadow */
-      
-      /* Dark Canvas Colors */
-      --dark-canvas-primary: rgba(74, 144, 226, 0.6);
-      --dark-canvas-secondary: rgba(108, 182, 255, 0.4);
-    }
-
-    [data-theme="light"] {
       /* Light Theme Professional */
       --primary: #0056b3; /* Darker Blue */
       --secondary: #007bff; /* Standard Blue for highlights */
@@ -33,23 +17,23 @@
       --card-bg: #ffffff; /* White card background */
       --border-color: rgba(0, 86, 179, 0.1);
       --shadow-color: rgba(0, 0, 0, 0.08);
-
-      /* Light Canvas Colors */
-      --light-canvas-primary: rgba(0, 86, 179, 0.3);
-      --light-canvas-secondary: rgba(0, 123, 255, 0.15);
+      
+      /* Canvas Colors */
+      --canvas-primary: rgba(0, 86, 179, 0.3);
+      --canvas-secondary: rgba(0, 123, 255, 0.15);
     }
 
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
+      transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease, transform 0.3s ease, box-shadow 0.3s ease;
     }
 
     body {
       font-family: 'Inter', sans-serif;
       background-color: var(--bg-color);
       color: var(--text-color);
-      transition: background-color 0.4s ease, color 0.4s ease;
       line-height: 1.6;
       position: relative;
       overflow-x: hidden;
@@ -59,7 +43,7 @@
       scroll-behavior: smooth;
     }
 
-    /* --- Animated Background (Subtle Geometric) --- */
+    /* --- Animated Canvas Background --- */
     #background-canvas {
       position: fixed;
       top: 0;
@@ -67,8 +51,7 @@
       width: 100%;
       height: 100%;
       z-index: -1;
-      opacity: 0.1; /* Very subtle */
-      transition: opacity 0.4s ease;
+      opacity: 0.8; /* Subtle but visible */
     }
 
     .container {
@@ -77,27 +60,6 @@
       padding: 20px;
       position: relative;
       z-index: 1; /* Ensure content is above background */
-    }
-
-    .theme-toggle {
-      position: fixed; /* Changed to fixed for better access */
-      top: 20px;
-      right: 20px;
-      padding: 10px 18px;
-      background-color: var(--primary);
-      color: var(--heading-color);
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      font-weight: 500;
-      transition: background-color 0.3s ease, transform 0.2s ease;
-      z-index: 100;
-      box-shadow: 0 2px 8px var(--shadow-color);
-    }
-
-    .theme-toggle:hover {
-      background-color: var(--secondary);
-      transform: translateY(-2px);
     }
 
     .hero {
@@ -115,8 +77,7 @@
       overflow: hidden;
       margin: 0 auto 25px;
       border: 4px solid var(--primary);
-      box-shadow: 0 0 15px rgba(74, 144, 226, 0.4); /* Subtle glow */
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 0 15px rgba(0, 86, 179, 0.4);
     }
 
     .profile-photo:hover {
@@ -181,7 +142,6 @@
       border-radius: 6px;
       text-decoration: none;
       font-weight: 600;
-      transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     }
 
@@ -194,8 +154,8 @@
     section {
       padding: 80px 20px;
       text-align: center;
-      opacity: 0; /* For scroll reveal */
-      transform: translateY(20px); /* For scroll reveal */
+      opacity: 0;
+      transform: translateY(20px);
       transition: opacity 0.6s ease-out, transform 0.6s ease-out;
     }
 
@@ -221,12 +181,11 @@
 
     .skills li {
       background-color: var(--card-bg);
-      margin: 0; /* Gap handled by flexbox */
+      margin: 0;
       padding: 12px 20px;
       border-radius: 5px;
       border: 1px solid var(--border-color);
       font-weight: 500;
-      transition: all 0.3s ease;
       box-shadow: 0 2px 8px var(--shadow-color);
     }
     
@@ -252,8 +211,6 @@
       border-radius: 10px;
       border: 1px solid var(--border-color);
       box-shadow: 0 4px 15px var(--shadow-color);
-      transition: all 0.3s ease;
-      text-align: left;
     }
 
     .project-card:hover {
@@ -273,7 +230,7 @@
       font-size: 15px;
       color: var(--text-color);
       margin-bottom: 15px;
-      max-width: none; /* Override section p */
+      max-width: none;
     }
 
     .project-card a {
@@ -284,7 +241,6 @@
       margin-top: 10px;
       position: relative;
       padding-right: 20px;
-      transition: color 0.3s ease;
     }
 
     .project-card a::after {
@@ -330,7 +286,6 @@
       border-radius: 10px;
       border: 1px solid var(--border-color);
       box-shadow: 0 2px 10px var(--shadow-color);
-      transition: all 0.3s ease;
     }
     
     .timeline-entry:hover {
@@ -375,7 +330,7 @@
     .timeline-entry p {
       font-size: 15px;
       margin-bottom: 0;
-      max-width: none; /* Override section p */
+      max-width: none;
     }
 
     .contact-links {
@@ -391,7 +346,6 @@
       font-weight: 600;
       text-decoration: none;
       font-size: 18px;
-      transition: color 0.3s ease, transform 0.2s ease;
     }
 
     .contact-links a:hover {
@@ -418,14 +372,13 @@
       color: var(--text-color);
       font-family: 'Inter', sans-serif;
       font-size: 16px;
-      transition: border-color 0.3s ease, box-shadow 0.3s ease;
     }
 
     .contact-form input:focus,
     .contact-form textarea:focus {
       outline: none;
       border-color: var(--primary);
-      box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.3);
+      box-shadow: 0 0 0 3px rgba(0, 86, 179, 0.3);
     }
 
     .contact-form textarea {
@@ -442,7 +395,6 @@
       cursor: pointer;
       font-weight: 600;
       font-size: 17px;
-      transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     }
 
@@ -478,7 +430,6 @@
         border-radius: 50%;
         font-size: 18px;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-        transition: background-color 0.3s ease, transform 0.2s ease;
     }
 
     #scrollToTopBtn:hover {
@@ -507,19 +458,15 @@
 
   <canvas id="background-canvas"></canvas>
 
-  <button class="theme-toggle" onclick="toggleTheme()">Toggle Theme</button>
-
   <div class="hero">
     <div class="profile-photo">
       <img src="pic1.jpg" alt="Pranjal Rai's Profile Picture">
     </div>
     <h1>Hi, I'm Pranjal Rai</h1>
     <p>Student at KIIT | Aspiring Tech Enthusiast</p>
-    <div class="buttons">
-      <a href="#about" class="button">Learn More</a>
+          <a href="#about" class="button">Learn More</a>
       <a href="Pranjal_Rai_Resume.pdf" class="button" download>Download Resume</a>
-    </div>
-  </div>
+      </div>
 
   <div class="container">
     <section id="about">
@@ -620,22 +567,6 @@
   <button onclick="scrollToTop()" id="scrollToTopBtn" title="Go to top"><i class="fas fa-arrow-up"></i></button>
 
   <script>
-    // Theme Toggle Functionality
-    function toggleTheme() {
-      const currentTheme = document.documentElement.getAttribute("data-theme");
-      const newTheme = currentTheme === "dark" ? "light" : "dark";
-      document.documentElement.setAttribute("data-theme", newTheme);
-      localStorage.setItem("theme", newTheme); // Save preference
-      updateCanvasColors(newTheme); // Update canvas colors on theme change
-    }
-
-    // Load saved theme or default to dark
-    document.addEventListener('DOMContentLoaded', () => {
-      const savedTheme = localStorage.getItem("theme") || "dark";
-      document.documentElement.setAttribute("data-theme", savedTheme);
-      updateCanvasColors(savedTheme); // Initialize canvas colors
-    });
-
     // Scroll Reveal Animation
     const sections = document.querySelectorAll('section');
 
@@ -678,7 +609,7 @@
       });
     }
 
-    // --- Background Canvas Animation (Geometric Lines/Dots) ---
+    // --- Background Canvas Animation (Network Mesh) ---
     const canvas = document.getElementById('background-canvas');
     const ctx = canvas.getContext('2d');
     let particles = [];
@@ -686,36 +617,24 @@
 
     let primaryCanvasColor, secondaryCanvasColor;
 
-    function updateCanvasColors(theme) {
-      if (theme === "dark") {
-        const style = getComputedStyle(document.documentElement);
-        primaryCanvasColor = style.getPropertyValue('--dark-canvas-primary').trim();
-        secondaryCanvasColor = style.getPropertyValue('--dark-canvas-secondary').trim();
-      } else {
-        const style = getComputedStyle(document.documentElement);
-        primaryCanvasColor = style.getPropertyValue('--light-canvas-primary').trim();
-        secondaryCanvasColor = style.getPropertyValue('--light-canvas-secondary').trim();
-      }
-      if (animationFrameId) {
-        cancelAnimationFrame(animationFrameId);
-        particles = []; 
-        initCanvas();
-      } else {
-        initCanvas(); 
-      }
+    function updateCanvasColors() {
+      // Hardcoded for light theme
+      const style = getComputedStyle(document.documentElement);
+      primaryCanvasColor = style.getPropertyValue('--canvas-primary').trim();
+      secondaryCanvasColor = style.getPropertyValue('--canvas-secondary').trim();
     }
 
     function resizeCanvas() {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
-      initCanvas(); 
+      initCanvas();
     }
 
     function Particle(x, y) {
       this.x = x;
       this.y = y;
       this.size = Math.random() * 2 + 1;
-      this.speedX = (Math.random() - 0.5) * 0.2; 
+      this.speedX = (Math.random() - 0.5) * 0.2;
       this.speedY = (Math.random() - 0.5) * 0.2;
       this.color = primaryCanvasColor;
     }
@@ -773,8 +692,8 @@
 
     window.addEventListener('resize', resizeCanvas);
     
-    const initialTheme = localStorage.getItem("theme") || "dark";
-    updateCanvasColors(initialTheme);
+    // Initial call to set colors and start animation
+    updateCanvasColors();
     resizeCanvas();
     animateCanvas();
   </script>
